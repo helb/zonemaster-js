@@ -1,0 +1,37 @@
+{
+  "name": "zonemaster",
+  "version": "0.0.1",
+  "description": "JS interface for Zonemaster from IIS.se",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src --presets babel-preset-es2017 --out-dir dist",
+    "cleanup": "rimraf dist",
+    "prepublish": "npm run cleanup && npm run build",
+    "lint": "eslint .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/helb/zonemaster-js.git"
+  },
+  "keywords": [
+    "dns"
+  ],
+  "author": "helb <helb@helb.cz>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/helb/zonemaster-js/issues"
+  },
+  "homepage": "https://github.com/helb/zonemaster-js#readme",
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.24.1",
+    "babel-eslint": "^7.2.3",
+    "babel-preset-es2017": "^6.24.1",
+    "eslint": "^4.1.1",
+    "rimraf": "^2.6.1"
+  },
+  "dependencies": {
+    "dutier": "^0.6.2"
+  }
+}
