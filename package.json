@@ -4,11 +4,12 @@
   "description": "JS interface for Zonemaster from IIS.se",
   "main": "index.js",
   "scripts": {
-    "build": "babel src --presets babel-preset-es2017 --out-dir dist",
+    "build": "babel src --out-dir dist",
     "cleanup": "rimraf dist",
-    "prepublish": "npm run cleanup && npm run build",
-    "lint": "eslint .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepublish": "npm run cleanup && npm run lint && npm run build",
+    "lint": "eslint src",
+    "test": "mocha --compilers js:babel-register --recursive",
+    "test:watch": "npm test -- --watch"
   },
   "repository": {
     "type": "git",
@@ -28,7 +29,10 @@
     "babel-cli": "^6.24.1",
     "babel-eslint": "^7.2.3",
     "babel-preset-es2017": "^6.24.1",
+    "chai": "^4.0.2",
     "eslint": "^4.1.1",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.4.2",
     "rimraf": "^2.6.1"
   },
   "dependencies": {
