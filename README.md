@@ -40,9 +40,9 @@ zm.versionInfo()
 
 Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** data
 
-Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** data.zonemaster_backend
+Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** data.zonemaster_backend
 
-Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** data.zonemaster_engine
+Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** data.zonemaster_engine
 
 #### getDataFromParentZone
 
@@ -51,7 +51,7 @@ API method: <https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md
 
 **Parameters**
 
--   `domain` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Domain name.
+-   `domain` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Domain name.
 
 **Examples**
 
@@ -70,7 +70,7 @@ Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refere
 
 Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** data.ds_list - See backend docs.
 
-Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** data.error Returns an error message when both ns_list and ds_list are empty or when the backend responds with an error message.
+Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** data.error Returns an error message when both ns_list and ds_list are empty or when the backend responds with an error message.
 
 #### getNameserverIPs
 
@@ -79,7 +79,7 @@ API method: <https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md
 
 **Parameters**
 
--   `domain` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Domain name.
+-   `domain` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Domain name.
 
 **Examples**
 
@@ -94,7 +94,7 @@ Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 
 Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** data.nameservers - Nameserver IPs, both IPv4 and IPv6
 
-Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** data.error - Returns an error when no nameservers are found (backend returned 0.0.0.0, see their docs)
+Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** data.error - Returns an error when no nameservers are found (backend returned 0.0.0.0, see their docs)
 
 ## Development
 

@@ -23,8 +23,8 @@ export default class Zonemaster {
   * // → {'zonemaster_backend': '…', 'zonemaster_engine': '…'}
   *
   * @returns {Object} data
-  * @returns {string} data.zonemaster_backend
-  * @returns {string} data.zonemaster_engine
+  * @returns {String} data.zonemaster_backend
+  * @returns {String} data.zonemaster_engine
   */
   async versionInfo() {
     return await rpc(this.config.backendUrl, 'version_info');
@@ -33,7 +33,7 @@ export default class Zonemaster {
   /**
   * Get domain data from it's parent zone.
   * API method: https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-get_data_from_parent_zone
-  * @param {string} domain Domain name.
+  * @param {String} domain Domain name.
   *
   * @example
   * zm.getDataFromParentZone('nic.cz')
@@ -46,7 +46,7 @@ export default class Zonemaster {
   * @returns {Object} data
   * @returns {Array} data.ns_list - See backend docs.
   * @returns {Array} data.ds_list - See backend docs.
-  * @returns {string} data.error Returns an error message when both ns_list and ds_list are empty or when the backend responds with an error message.
+  * @returns {String} data.error Returns an error message when both ns_list and ds_list are empty or when the backend responds with an error message.
   */
   async getDataFromParentZone(domain) {
     let response = await rpc(this.config.backendUrl, 'get_data_from_parent_zone', domain);
@@ -63,7 +63,7 @@ export default class Zonemaster {
   /**
   * Get nameservers for a domain.
   * API method: https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-get_ns_ips
-  * @param {string} domain Domain name.
+  * @param {String} domain Domain name.
   *
   * @example
   * zm.getNameserverIPs('nic.cz')
@@ -73,7 +73,7 @@ export default class Zonemaster {
   *
   * @returns {Object} data
   * @returns {Array} data.nameservers - Nameserver IPs, both IPv4 and IPv6
-  * @returns {string} data.error - Returns an error when no nameservers are found (backend returned 0.0.0.0, see their docs)
+  * @returns {String} data.error - Returns an error when no nameservers are found (backend returned 0.0.0.0, see their docs)
   */
   async getNameserverIPs(domain) {
     let nameservers = [];
