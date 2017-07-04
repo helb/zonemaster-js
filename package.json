@@ -2,40 +2,76 @@
   "name": "zonemaster",
   "version": "0.0.1",
   "description": "JS interface for Zonemaster from IIS.se",
+  "license": "GPL-3.0",
+  "repository": "helb/zonemaster-js",
   "main": "index.js",
-  "scripts": {
-    "build": "babel src --out-dir dist",
-    "cleanup": "rimraf dist",
-    "prepublish": "npm run cleanup && npm run lint && npm run build",
-    "lint": "eslint src",
-    "test": "mocha --compilers js:babel-register --recursive",
-    "test:watch": "npm test -- --watch"
+  "author": {
+    "email": "helb@helb.cz",
+    "url": "github.com/helb"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/helb/zonemaster-js.git"
+  "engines": {
+    "node": ">=8"
+  },
+  "files": [
+    "dist",
+    "index.js"
+  ],
+  "scripts": {
+    "test": "jest",
+    "coverage": "npm test -- --coverage",
+    "postcoverage": "opn coverage/lcov-report/index.html",
+    "lint": "eslint src test",
+    "flow": "flow check",
+    "docs": "documentation readme src --section=API",
+    "clean": "rimraf dist",
+    "prebuild": "npm run docs && npm run clean",
+    "build": "babel src -d dist",
+    "watch": "npm-watch",
+    "patch": "npm version patch && npm publish",
+    "minor": "npm version minor && npm publish",
+    "major": "npm version major && npm publish",
+    "prepare": "npm run lint && npm test",
+    "prepublishOnly": "npm run build",
+    "postpublish": "git push origin master --follow-tags"
+  },
+  "watch": {
+    "test": "{src,test}/*.js",
+    "lint": "{src,test}/*.js",
+    "build": "src"
+  },
+  "jest": {
+    "testRegex": "/test/.*",
+    "testEnvironment": "node"
   },
   "keywords": [
-    "dns"
+    "dns",
+    "zonemaster"
   ],
-  "author": "helb <helb@helb.cz>",
-  "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/helb/zonemaster-js/issues"
-  },
-  "homepage": "https://github.com/helb/zonemaster-js#readme",
-  "devDependencies": {
-    "babel": "^6.23.0",
-    "babel-cli": "^6.24.1",
-    "babel-eslint": "^7.2.3",
-    "babel-preset-es2017": "^6.24.1",
-    "chai": "^4.0.2",
-    "eslint": "^4.1.1",
-    "istanbul": "^0.4.5",
-    "mocha": "^3.4.2",
-    "rimraf": "^2.6.1"
-  },
   "dependencies": {
-    "dutier": "^0.6.2"
+    "isomorphic-fetch": "^2.2.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-eslint": "^7.1.1",
+    "babel-jest": "^20.0.3",
+    "babel-preset-env": "^1.1.8",
+    "babel-preset-es2017": "^6.24.1",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-preset-stage-2": "^6.18.0",
+    "documentation": "4.0.0-rc.1",
+    "eslint": "^4.1.1",
+    "eslint-config-airbnb-base": "^11.0.1",
+    "eslint-plugin-flowtype": "^2.29.2",
+    "eslint-plugin-flowtype-errors": "^3.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "flow-bin": "^0.49.1",
+    "jest-cli": "^20.0.0",
+    "mocha": "^3.4.2",
+    "npm-watch": "^0.2.0",
+    "opn-cli": "^3.1.0",
+    "rimraf": "^2.6.1",
+    "stylelint": "^7.12.0",
+    "stylelint-processor-styled-components": "^0.1.2"
   }
 }
