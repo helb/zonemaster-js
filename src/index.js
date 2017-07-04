@@ -67,13 +67,13 @@ export default class Zonemaster {
   *
   * @example
   * zm.getNameserverIPs('nic.cz')
-  * // → {'ns_list': […], 'ds_list': […]}
+  * // → {'nameservers': […]}
   * zm.getNameserverIPs('does-not-exist.cz')
   * // → {error: 'No A or AAAA records found.'}
   *
   * @returns {Object} data
-  * @returns {Array} data.nameservers Nameserver IPs, both IPv4 and IPv6
-  * @returns {string} data.error Return an error when no nameservers are found (backend returns 0.0.0.0)
+  * @returns {Array} data.nameservers - Nameserver IPs, both IPv4 and IPv6
+  * @returns {string} data.error - Returns an error when no nameservers are found (backend returned 0.0.0.0, see their docs)
   */
   async getNameserverIPs(domain) {
     let nameservers = [];

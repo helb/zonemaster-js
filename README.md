@@ -85,13 +85,43 @@ API method: <https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md
 
 ```javascript
 zm.getNameserverIPs('nic.cz')
-// → {'ns_list': […], 'ds_list': […]}
+// → {'nameservers': […]}
 zm.getNameserverIPs('does-not-exist.cz')
 // → {error: 'No A or AAAA records found.'}
 ```
 
 Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** data
 
-Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** data.nameservers Nameserver IPs, both IPv4 and IPv6
+Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** data.nameservers - Nameserver IPs, both IPv4 and IPv6
 
-Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** data.error Return an error when no nameservers are found (backend returns 0.0.0.0)
+Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** data.error - Returns an error when no nameservers are found (backend returned 0.0.0.0, see their docs)
+
+## Development
+
+```sh
+$ git clone https://github.com/helb/zonemaster-js.git && cd zonemaster-js.git
+$ npm install
+```
+
+### Testing
+
+```sh
+$ # edit test-config.js and set your backend URL
+$ npm test
+```
+
+Generating a coverage report:
+
+```sh
+$ npm run coverage
+```
+
+Reports are placed into `./coverage` directory and a HTML version should open in your default browser when finished.
+
+### Building
+
+```sh
+$ npm run build
+```
+
+Build output is placed to `./dist` directory.
