@@ -2,11 +2,12 @@ import rpc from './jsonrpc';
 
 /**
  * Interface to the Zonemaster backend.
+ * @param backendUrl Zonemaster backend URL, including protocol
+ *
+ * @example
+ * const zm = new Zonemaster('http://localhost:5000/')
  */
 export default class Zonemaster {
-  /**
-  * @param backendUrl Zonemaster backend URL, including protocol
-  */
   constructor(backendUrl) {
     this.config = {
       backendUrl
@@ -16,6 +17,11 @@ export default class Zonemaster {
   /**
   * Get Zonemaster's backend and engine version.
   * API method: https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-version_info
+  *
+  * @example
+  * zm.versionInfo()
+  * // → {'zonemaster_backend': '…', 'zonemaster_engine': '…'}
+  *
   * @returns {Object} data
   * @returns {string} data.zonemaster_backend
   * @returns {string} data.zonemaster_engine
@@ -28,15 +34,24 @@ export default class Zonemaster {
   * Get domain data from it's parent zone.
   * API method: https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-get_data_from_parent_zone
   * @param {string} domain Domain name.
+  *
+  * @example
+  * zm.getDataFromParentZone('nic.cz')
+  * // → {'ns_list': […], 'ds_list': […]}
+  * zm.getDataFromParentZone('does-not-exist.cz')
+  * // → {'error': 'Domain does not exist.'}
+  * zm.getDataFromParentZone('.cz')
+  * // → {'error': 'Domain name name or label outside allowed length'} -- error message from backend
+  *
   * @returns {Object} data
-  * @returns {Array} data.ns_list See backend docs.
-  * @returns {Array} data.ds_list See backend docs.
-  * @returns {string} data.error Return an error message when both ns_list and ds_list are empty or when the backend responds with an error message.
+  * @returns {Array} data.ns_list - See backend docs.
+  * @returns {Array} data.ds_list - See backend docs.
+  * @returns {string} data.error Returns an error message when both ns_list and ds_list are empty or when the backend responds with an error message.
   */
   async getDataFromParentZone(domain) {
     let response = await rpc(this.config.backendUrl, 'get_data_from_parent_zone', domain);
 
-    if (response.status === "nok") {
+    if (response.status === 'nok') {
       return {error: response.message};
     } else if (response['ns_list'].length === 0 && response['ds_list'].length === 0) {
       return {error: 'Domain does not exist.'};
@@ -49,6 +64,13 @@ export default class Zonemaster {
   * Get nameservers for a domain.
   * API method: https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-get_ns_ips
   * @param {string} domain Domain name.
+  *
+  * @example
+  * zm.getNameserverIPs('nic.cz')
+  * // → {'ns_list': […], 'ds_list': […]}
+  * zm.getNameserverIPs('does-not-exist.cz')
+  * // → {error: 'No A or AAAA records found.'}
+  *
   * @returns {Object} data
   * @returns {Array} data.nameservers Nameserver IPs, both IPv4 and IPv6
   * @returns {string} data.error Return an error when no nameservers are found (backend returns 0.0.0.0)
