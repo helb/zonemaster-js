@@ -5,11 +5,38 @@ JavaScript interface for [Zonemaster](https://github.com/dotse/zonemaster-backen
 [![Build Status](https://travis-ci.org/helb/zonemaster-js.svg?branch=master)](https://travis-ci.org/helb/zonemaster-js)
 [![codecov](https://codecov.io/gh/helb/zonemaster-js/branch/master/graph/badge.svg)](https://codecov.io/gh/helb/zonemaster-js)
 
-## Installation
+## Installation & basic usage
 
 ```sh
-$ npm install --save zonemaster
+$ npm install --save zonemaster-js
 ```
+
+```javascript
+import Zonemaster from 'zonemaster-js';
+
+const zm = new Zonemaster('https://backend-url');
+// backend needs to live on the same domain or accept CORS requests,
+// use --disable-web-security flag for Chrome for easy testing
+
+
+// using with Promises (ES6/ES2015):
+
+zm.versionInfo().then(version => console.log(version));
+// → {'zonemaster_backend': '…', 'zonemaster_engine': '…'}
+
+
+// using with async/await (ES8/ES2017):
+
+console.log(await zm.versionInfo());
+// → {'zonemaster_backend': '…', 'zonemaster_engine': '…'}
+console.log(await zm.getNameserverIPs('nic.cz'));
+// → {'nameservers': ['2001:1488:0:3::2', '217.31.205.50']}
+```
+
+Note: `await` can be used inside `async` functions only, as there is no support for "top-level await" in JS (currently?):
+
+-   [Clarifying question: can await be used in top-level code?](https://github.com/tc39/ecmascript-asyncawait/issues/9)
+-   [Top-level await is a footgun](https://gist.github.com/Rich-Harris/0b6f317657f5167663b493c722647221)
 
 ## API
 
