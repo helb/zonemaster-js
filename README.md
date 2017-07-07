@@ -3,7 +3,7 @@
 JavaScript interface for [Zonemaster](https://github.com/dotse/zonemaster-backend/) JSONRPC API.
 
 [![Build Status](https://travis-ci.org/helb/zonemaster-js.svg?branch=master)](https://travis-ci.org/helb/zonemaster-js)
-[![Coverage Status](https://coveralls.io/repos/github/helb/zonemaster-js/badge.svg?branch=master)](https://coveralls.io/github/helb/zonemaster-js?branch=master)
+[![codecov](https://codecov.io/gh/helb/zonemaster-js/branch/master/graph/badge.svg)](https://codecov.io/gh/helb/zonemaster-js)
 
 ## Installation
 
