@@ -5,22 +5,6 @@ JavaScript interface for [Zonemaster](https://github.com/dotse/zonemaster-backen
 [![Build Status](https://travis-ci.org/helb/zonemaster-js.svg?branch=master)](https://travis-ci.org/helb/zonemaster-js)
 [![codecov](https://codecov.io/gh/helb/zonemaster-js/branch/master/graph/badge.svg)](https://codecov.io/gh/helb/zonemaster-js)
 
-<!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
-
--   [Installation & basic usage](#installation-basic-usage)
--   [API](#api)
-    		\- [Zonemaster](#zonemaster)
-    			\- [versionInfo](#versioninfo)
-    			\- [getDataFromParentZone](#getdatafromparentzone)
-    			\- [getNameserverIPs](#getnameserverips)
-    			\- [startDomainTest](#startdomaintest)
-    			\- [testProgress](#testprogress)
--   [Development](#development)
-    		\- [Testing](#testing)
-    		\- [Building](#building)
-
-<!-- /TOC -->
-
 ## Installation & basic usage
 
 ```sh
