@@ -5,6 +5,22 @@ JavaScript interface for [Zonemaster](https://github.com/dotse/zonemaster-backen
 [![Build Status](https://travis-ci.org/helb/zonemaster-js.svg?branch=master)](https://travis-ci.org/helb/zonemaster-js)
 [![codecov](https://codecov.io/gh/helb/zonemaster-js/branch/master/graph/badge.svg)](https://codecov.io/gh/helb/zonemaster-js)
 
+<!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+
+- [Installation & basic usage](#installation-basic-usage)
+- [API](#api)
+	- [Zonemaster](#zonemaster)
+		- [versionInfo](#versioninfo)
+		- [getDataFromParentZone](#getdatafromparentzone)
+		- [getNameserverIPs](#getnameserverips)
+		- [startDomainTest](#startdomaintest)
+		- [testProgress](#testprogress)
+- [Development](#development)
+	- [Testing](#testing)
+	- [Building](#building)
+
+<!-- /TOC -->
+
 ## Installation & basic usage
 
 ```sh
@@ -35,8 +51,8 @@ console.log(await zm.getNameserverIPs('nic.cz'));
 
 Note: `await` can be used inside `async` functions only, as there is no support for "top-level await" in JS (currently?):
 
--   [Clarifying question: can await be used in top-level code?](https://github.com/tc39/ecmascript-asyncawait/issues/9)
--   [Top-level await is a footgun](https://gist.github.com/Rich-Harris/0b6f317657f5167663b493c722647221)
+- [Clarifying question: can await be used in top-level code?](https://github.com/tc39/ecmascript-asyncawait/issues/9)
+- [Top-level await is a footgun](https://gist.github.com/Rich-Harris/0b6f317657f5167663b493c722647221)
 
 ## API
 
