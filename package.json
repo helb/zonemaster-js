@@ -1,6 +1,6 @@
 {
   "name": "zonemaster-js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "JS interface for Zonemaster from IIS.se",
   "license": "GPL-3.0",
   "repository": "https://github.com/helb/zonemaster-js.git",
@@ -12,7 +12,10 @@
   "engines": {
     "node": ">=8"
   },
-  "files": ["dist", "index.js"],
+  "files": [
+    "dist",
+    "index.js"
+  ],
   "scripts": {
     "test": "jest",
     "coverage": "npm test -- --coverage",
@@ -40,10 +43,18 @@
     "testRegex": "/test/.*",
     "testEnvironment": "node",
     "automock": false,
-    "setupFiles": ["./test-config.js"],
-    "coveragePathIgnorePatterns": ["/node_modules/", "test-config.js"]
+    "setupFiles": [
+      "./test-config.js"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "test-config.js"
+    ]
   },
-  "keywords": ["dns", "zonemaster"],
+  "keywords": [
+    "dns",
+    "zonemaster"
+  ],
   "dependencies": {
     "isomorphic-fetch": "^2.2.1"
   },
