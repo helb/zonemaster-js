@@ -1,10 +1,11 @@
 export default {
-  backendUrl: "http://localhost:5000/",
+  backendUrl: 'http://217.31.192.51:5000/',
+  useRealBackend: true,
   domains: {
-    default: "nic.cz",
-    withDNSSEC: "nic.cz",
-    withoutDNSSEC: "nic.sk",
-    unallowed: ".cz",
-    nonexisting: "_"
+    default: 'nic.cz',
+    withDNSSEC: 'nic.cz',
+    withoutDNSSEC: 'nic.sk',
+    unallowed: '.cz',
+    nonexisting: '_'
   }
-}
+};
