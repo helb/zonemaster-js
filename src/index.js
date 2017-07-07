@@ -33,7 +33,7 @@ export default class Zonemaster {
   /**
   * Get domain data from it's parent zone.
   * API method: https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-get_data_from_parent_zone
-  * @param {String} domain Domain name.
+  * @param {String} domain - Domain name.
   *
   * @example
   * zm.getDataFromParentZone('nic.cz')
@@ -43,18 +43,25 @@ export default class Zonemaster {
   * zm.getDataFromParentZone('.cz')
   * // → {'error': 'Domain name name or label outside allowed length'} -- error message from backend
   *
-  * @returns {Object} data
-  * @returns {Array} data.ns_list - See backend docs.
-  * @returns {Array} data.ds_list - See backend docs.
-  * @returns {String} data.error Returns an error message when both ns_list and ds_list are empty or when the backend responds with an error message.
+  * @returns {Object}  data
+  * @returns {Array}   data.ns_list - See backend docs.
+  * @returns {Array}   data.ds_list - See backend docs.
+  * @returns {String}  data.error   - Returns an error message when both ns_list and ds_list are empty or when the backend responds with an error message.
   */
   async getDataFromParentZone(domain) {
-    let response = await rpc(this.config.backendUrl, 'get_data_from_parent_zone', domain);
+    let response = await rpc(
+      this.config.backendUrl,
+      'get_data_from_parent_zone',
+      domain
+    );
 
     if (response.status === 'nok') {
-      return {error: response.message};
-    } else if (response['ns_list'].length === 0 && response['ds_list'].length === 0) {
-      return {error: 'Domain does not exist.'};
+      return { error: response.message };
+    } else if (
+      response['ns_list'].length === 0 &&
+      response['ds_list'].length === 0
+    ) {
+      return { error: 'Domain does not exist.' };
     } else {
       return response;
     }
@@ -63,7 +70,7 @@ export default class Zonemaster {
   /**
   * Get nameservers for a domain.
   * API method: https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-get_ns_ips
-  * @param {String} domain Domain name.
+  * @param   {String} domain - Domain name.
   *
   * @example
   * zm.getNameserverIPs('nic.cz')
@@ -72,21 +79,50 @@ export default class Zonemaster {
   * // → {error: 'No A or AAAA records found.'}
   *
   * @returns {Object} data
-  * @returns {Array} data.nameservers - Nameserver IPs, both IPv4 and IPv6
-  * @returns {String} data.error - Returns an error when no nameservers are found (backend returned 0.0.0.0, see their docs)
+  * @returns {Array}  data.nameservers - Nameserver IPs, both IPv4 and IPv6
+  * @returns {String} data.error       - Returns an error when no nameservers are found (backend returned 0.0.0.0, see their docs)
   */
   async getNameserverIPs(domain) {
     let nameservers = [];
     let response = await rpc(this.config.backendUrl, 'get_ns_ips', domain);
 
-    response.forEach((ns) => {
+    response.forEach(ns => {
       nameservers.push(Object.values(ns)[0]);
     });
 
     if (nameservers.includes('0.0.0.0')) {
-      return {error: 'No A or AAAA records found.'};
+      return { error: 'No A or AAAA records found.' };
     } else {
-      return {nameservers};
+      return { nameservers };
     }
+  }
+
+  /**
+  * Start a new domain test.
+  * API method: https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-start_domain_test
+  * @param {String}   domain             - Domain name…
+  * @param {Object}   config             - …or a config object with advanced options
+  * @param {String}   config.domain      - Domain name, required
+  * @param {Object}   config.nameservers - Nameservers to use, see backend docs
+  * @param {String}   config.profile     - Test profile to use, optional
+  * @param {Boolean}  config.ipv4        - Use IPv4, defaults to false
+  * @param {Boolean}  config.ipv6        - Use IPv6, defaults to false
+  * @param {Number}   config.priority    - Test priority, defaults to 10
+  *
+  * @example
+  * zm.startDomainTest('nic.cz')
+  * zm.startDomainTest({domain: 'nic.cz', nameservers: {…}, ipv6: true})
+  *
+  * @returns {Object} data
+  * @returns {String} data.id - Test ID
+  */
+  async startDomainTest(config = {domain, nameservers, profile, ipv4, ipv6, priority}) {
+    if (typeof(config) === "string") {
+      config = {domain: config}
+    }
+    console.log(config);
+    let response = await rpc(this.config.backendUrl, 'start_domain_test', config);
+    console.log(response);
+    return {id: response};
   }
 }
