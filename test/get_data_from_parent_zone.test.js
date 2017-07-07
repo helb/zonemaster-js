@@ -23,17 +23,19 @@ describe('Gets data from parent zone', () => {
   });
 
   test('error message for a non-existing domain', async () => {
-    expect.assertions(2);
+    expect.assertions(3);
     const data = await backend.getDataFromParentZone(
       config.domains.nonexisting
     );
     expect(data).toBeDefined();
     expect(data.error).toBeDefined();
+    expect(data.error).toEqual('Domain does not exist.');
   });
 
   test('error message for an unallowed domain', async () => {
-    expect.assertions(1);
+    expect.assertions(2);
     const data = await backend.getDataFromParentZone(config.domains.unallowed);
+    expect(data).toBeDefined();
     expect(data.error).toBeDefined();
   });
 });

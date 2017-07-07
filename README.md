@@ -70,7 +70,7 @@ Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refere
 
 Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** data.ds_list - See backend docs.
 
-Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** data.error Returns an error message when both ns_list and ds_list are empty or when the backend responds with an error message.
+Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** data.error   - Returns an error message when both ns_list and ds_list are empty or when the backend responds with an error message.
 
 #### getNameserverIPs
 
@@ -94,7 +94,61 @@ Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 
 Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** data.nameservers - Nameserver IPs, both IPv4 and IPv6
 
-Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** data.error - Returns an error when no nameservers are found (backend returned 0.0.0.0, see their docs)
+Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** data.error       - Returns an error when no nameservers are found (backend returned 0.0.0.0, see their docs)
+
+#### startDomainTest
+
+Start a new domain test.
+API method: <https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-start_domain_test>
+
+**Parameters**
+
+-   `config` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** …or a config object with advanced options
+    -   `config.domain` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Domain name, required
+    -   `config.nameservers` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Nameservers to use, optional, see backend docs
+    -   `config.profile` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Test profile to use, optional
+    -   `config.ipv4` **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Use IPv4, optional
+    -   `config.ipv6` **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Use IPv6, optional
+    -   `config.priority` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Test priority, optional
+-   `domain` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Domain name…
+
+**Examples**
+
+```javascript
+zm.startDomainTest('nic.cz')
+zm.startDomainTest({domain: 'nic.cz', nameservers: {…}, ipv6: true})
+```
+
+Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** data
+
+Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** data.id - Test ID
+
+#### testProgress
+
+Get test progress percentage.
+API method: <https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-test_progress>
+
+**Parameters**
+
+-   `testId`  
+-   `id` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Test ID (as returned from the startDomainTest method)
+
+**Examples**
+
+```javascript
+zm.testProgress('abdf123456789012')
+// → {progress: 80}
+zm.testProgress('foo')
+// → {error: 'Invalid test ID.'}
+zm.testProgress('1234567890123456')
+// → {error: 'Test not found.'}
+```
+
+Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** data
+
+Returns **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** data.progress - Test progress percentage
+
+Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** data.error    - Returns an error message for an invalid ID format or when the test wasn't found.
 
 ## Development
 

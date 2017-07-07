@@ -103,11 +103,11 @@ export default class Zonemaster {
   * @param {String}   domain             - Domain name…
   * @param {Object}   config             - …or a config object with advanced options
   * @param {String}   config.domain      - Domain name, required
-  * @param {Object}   config.nameservers - Nameservers to use, see backend docs
+  * @param {Object}   config.nameservers - Nameservers to use, optional, see backend docs
   * @param {String}   config.profile     - Test profile to use, optional
-  * @param {Boolean}  config.ipv4        - Use IPv4, defaults to false
-  * @param {Boolean}  config.ipv6        - Use IPv6, defaults to false
-  * @param {Number}   config.priority    - Test priority, defaults to 10
+  * @param {Boolean}  config.ipv4        - Use IPv4, optional
+  * @param {Boolean}  config.ipv6        - Use IPv6, optional
+  * @param {Number}   config.priority    - Test priority, optional
   *
   * @example
   * zm.startDomainTest('nic.cz')
@@ -116,9 +116,11 @@ export default class Zonemaster {
   * @returns {Object} data
   * @returns {String} data.id - Test ID
   */
-  async startDomainTest(config = {domain, nameservers, profile, ipv4, ipv6, priority}) {
-    if (typeof(config) === "string") {
+  async startDomainTest(config) {
+    if (typeof(config) === 'string') {
       config = {domain: config}
+    } else if (typeof(config.domain) !== 'string') {
+      return {error: 'Domain name required.'}
     }
     let response = await rpc(this.config.backendUrl, 'start_domain_test', config);
     return {id: response};
