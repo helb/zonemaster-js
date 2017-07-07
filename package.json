@@ -1,5 +1,5 @@
 {
-  "name": "zonemaster",
+  "name": "zonemaster-js",
   "version": "0.0.1",
   "description": "JS interface for Zonemaster from IIS.se",
   "license": "GPL-3.0",
