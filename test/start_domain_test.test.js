@@ -1,28 +1,43 @@
-import Zonemaster from '../src';
+import Zonemaster from '../src/';
 import config from '../test-config.js';
 
 describe('Starts a new test', () => {
   const backend = new Zonemaster(config.backendUrl);
 
   test('with just a domain name', async () => {
+    if (!config.useRealBackend) {
+      fetch.mockResponse(
+        JSON.stringify({ id: null, jsonrpc: '2.0', result: '7e5f02f0e433fe20' })
+      );
+    }
     expect.assertions(3);
     const data = await backend.startDomainTest(config.domains.default);
     expect(data).toBeDefined();
-    expect(data['id']).toBeDefined();
-    expect(data['id'].length).toEqual(16);
+    expect(data.id).toBeDefined();
+    expect(data.id.length).toEqual(16);
   });
 
   test('with default parameters', async () => {
+    if (!config.useRealBackend) {
+      fetch.mockResponse(
+        JSON.stringify({ id: null, jsonrpc: '2.0', result: '7e5f02f0e433fe20' })
+      );
+    }
     expect.assertions(3);
     const data = await backend.startDomainTest({
       domain: config.domains.default
     });
     expect(data).toBeDefined();
-    expect(data['id']).toBeDefined();
-    expect(data['id'].length).toEqual(16);
+    expect(data.id).toBeDefined();
+    expect(data.id.length).toEqual(16);
   });
 
   test('with advanced parameters', async () => {
+    if (!config.useRealBackend) {
+      fetch.mockResponse(
+        JSON.stringify({ id: null, jsonrpc: '2.0', result: '7e5f02f0e433fe20' })
+      );
+    }
     expect.assertions(3);
     const data = await backend.startDomainTest({
       domain: config.domains.default,
@@ -30,8 +45,8 @@ describe('Starts a new test', () => {
       priority: 1
     });
     expect(data).toBeDefined();
-    expect(data['id']).toBeDefined();
-    expect(data['id'].length).toEqual(16);
+    expect(data.id).toBeDefined();
+    expect(data.id.length).toEqual(16);
   });
 
   test('returns an error when called without a domain name', async () => {

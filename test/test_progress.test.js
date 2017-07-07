@@ -1,10 +1,15 @@
-import Zonemaster from '../src';
+import Zonemaster from '../src/';
 import config from '../test-config.js';
 
 describe('Gets test progress', () => {
   const backend = new Zonemaster(config.backendUrl);
 
   test('returns 100 (%) for a finished test', async () => {
+    if (!config.useRealBackend) {
+      fetch.mockResponse(
+        JSON.stringify({ result: 100, jsonrpc: '2.0', id: null })
+      );
+    }
     expect.assertions(3);
     const data = await backend.testProgress(config.testIds.finished);
     expect(data).toBeDefined();
@@ -13,6 +18,11 @@ describe('Gets test progress', () => {
   });
 
   test('returns an error for a non-existing test', async () => {
+    if (!config.useRealBackend) {
+      fetch.mockResponse(
+        JSON.stringify({ result: null, jsonrpc: '2.0', id: null })
+      );
+    }
     expect.assertions(4);
     const data = await backend.testProgress(config.testIds.nonexisting);
     expect(data).toBeDefined();

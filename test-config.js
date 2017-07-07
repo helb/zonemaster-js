@@ -1,6 +1,8 @@
-export default {
-  backendUrl: 'http://217.31.192.51:5000/',
-  useRealBackend: true,
+import 'isomorphic-fetch';
+
+const config = {
+  backendUrl: 'http://localhost:5000/',
+  useRealBackend: false,
   domains: {
     default: 'nic.cz',
     withDNSSEC: 'nic.cz',
@@ -9,8 +11,15 @@ export default {
     nonexisting: '_'
   },
   testIds: {
-    'finished': '2499e68a5e11234a',
-    'nonexisting': 'abdf123456789012',
-    'invalid': 'foo'
+    finished: '2499e68a5e11234a',
+    nonexisting: 'abdf123456789012',
+    invalid: 'foo'
   }
 };
+
+if (!config.useRealBackend) {
+  /* eslint global-require: 0 */
+  global.fetch = require('jest-fetch-mock');
+}
+
+export default config;

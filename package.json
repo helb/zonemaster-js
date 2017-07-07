@@ -12,10 +12,7 @@
   "engines": {
     "node": ">=8"
   },
-  "files": [
-    "dist",
-    "index.js"
-  ],
+  "files": ["dist", "index.js"],
   "scripts": {
     "test": "jest",
     "coverage": "npm test -- --coverage",
@@ -41,12 +38,12 @@
   },
   "jest": {
     "testRegex": "/test/.*",
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "automock": false,
+    "setupFiles": ["./test-config.js"],
+    "coveragePathIgnorePatterns": ["/node_modules/", "test-config.js"]
   },
-  "keywords": [
-    "dns",
-    "zonemaster"
-  ],
+  "keywords": ["dns", "zonemaster"],
   "dependencies": {
     "isomorphic-fetch": "^2.2.1"
   },
@@ -62,18 +59,13 @@
     "documentation": "4.0.0-rc.1",
     "eslint": "^4.1.1",
     "eslint-config-airbnb-base": "^11.0.1",
-    "eslint-plugin-flowtype": "^2.29.2",
-    "eslint-plugin-flowtype-errors": "^3.0.0",
     "eslint-plugin-import": "^2.7.0",
-    "flow-bin": "^0.49.1",
     "jest-cli": "^20.0.0",
-    "mocha": "^3.4.2",
+    "jest-fetch-mock": "^1.2.0",
     "npm-watch": "^0.2.0",
     "opn-cli": "^3.1.0",
     "prettier": "^1.5.2",
     "prettier-eslint": "^6.4.2",
-    "rimraf": "^2.6.1",
-    "stylelint": "^7.12.0",
-    "stylelint-processor-styled-components": "^0.1.2"
+    "rimraf": "^2.6.1"
   }
 }

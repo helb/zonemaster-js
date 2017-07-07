@@ -103,14 +103,14 @@ API method: <https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md
 
 **Parameters**
 
--   `config` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** …or a config object with advanced options
+-   `config` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** A config object with domain and some advanced options
     -   `config.domain` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Domain name, required
     -   `config.nameservers` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Nameservers to use, optional, see backend docs
     -   `config.profile` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Test profile to use, optional
     -   `config.ipv4` **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Use IPv4, optional
     -   `config.ipv6` **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Use IPv6, optional
     -   `config.priority` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Test priority, optional
--   `domain` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Domain name…
+-   `domain` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** …or just a a domain name string
 
 **Examples**
 
@@ -160,11 +160,19 @@ $ npm install
 ### Testing
 
 ```sh
-$ # edit test-config.js and set your backend URL
 $ npm test
 ```
 
-Generating a coverage report:
+Set your options in `test-config.js`. HTTP calls are mocked by default, if you want to use a real backend, set it's URL in the config file and enable it's use:
+
+```javascript
+const config = {
+  backendUrl: 'https://url:port/',
+  useRealBackend: true,
+  …
+```
+
+Generating a test coverage report:
 
 ```sh
 $ npm run coverage
