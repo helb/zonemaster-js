@@ -120,9 +120,38 @@ export default class Zonemaster {
     if (typeof(config) === "string") {
       config = {domain: config}
     }
-    console.log(config);
     let response = await rpc(this.config.backendUrl, 'start_domain_test', config);
-    console.log(response);
     return {id: response};
+  }
+
+  /**
+  * Get test progress percentage.
+  * API method: https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-test_progress
+  * @param   {String} id - Test ID (as returned from the startDomainTest method)
+  *
+  * @example
+  * zm.testProgress('abdf123456789012')
+  * // → {progress: 80}
+  * zm.testProgress('foo')
+  * // → {error: 'Invalid test ID.'}
+  * zm.testProgress('1234567890123456')
+  * // → {error: 'Test not found.'}
+  *
+  * @returns {Object} data
+  * @returns {Number} data.progress - Test progress percentage
+  * @returns {String} data.error    - Returns an error message for an invalid ID format or when the test wasn't found.
+  */
+  async testProgress(testId) {
+    if (!/[a-f0-9]{16}/.test(testId)) {
+      return {error: 'Invalid test ID.'}
+    }
+
+    let response = await rpc(this.config.backendUrl, 'test_progress', testId);
+
+    if (typeof(response) === 'number') {
+      return {progress: response};
+    } else {
+      return {error: 'Test not found.'}
+    }
   }
 }
