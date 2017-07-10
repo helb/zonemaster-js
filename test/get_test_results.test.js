@@ -1,19 +1,20 @@
 import Zonemaster from '../src/';
 import config from '../test-config.js';
-import mocks from './__mocks__/test_progress.mock.js';
+import mocks from './__mocks__/get_test_results.mock.js';
 
-describe('Gets test progress', () => {
+describe('Gets test result', () => {
   const backend = new Zonemaster(config.backendUrl);
 
-  test('returns 100 (%) for a finished test', async () => {
+  test('returns result for a finished test', async () => {
     if (!config.useRealBackend) {
       fetch.mockResponse(JSON.stringify(mocks.mock1));
     }
-    expect.assertions(3);
-    const data = await backend.testProgress(config.testIds.finished);
+    expect.assertions(4);
+    const data = await backend.testResult(config.testIds.finished);
     expect(data).toBeDefined();
-    expect(data.progress).toBeDefined();
-    expect(data.progress).toEqual(100);
+    expect(data.params).toBeDefined();
+    expect(data.results).toBeDefined();
+    expect(data.results.length).toBeGreaterThan(0);
   });
 
   test('returns an error for a non-existing test', async () => {
@@ -21,18 +22,19 @@ describe('Gets test progress', () => {
       fetch.mockResponse(JSON.stringify(mocks.mock2));
     }
     expect.assertions(4);
-    const data = await backend.testProgress(config.testIds.nonexisting);
+    const data = await backend.testResult(config.testIds.nonexisting);
     expect(data).toBeDefined();
-    expect(data.progress).toBeUndefined();
+    expect(data.results).toBeUndefined();
+    expect(data.params).toBeUndefined();
     expect(data.error).toBeDefined();
-    expect(data.error).toEqual('Test not found.');
   });
 
   test('returns an error for an invalid test ID', async () => {
-    expect.assertions(4);
-    const data = await backend.testProgress(config.testIds.invalid);
+    expect.assertions(5);
+    const data = await backend.testResult(config.testIds.invalid);
     expect(data).toBeDefined();
-    expect(data.progress).toBeUndefined();
+    expect(data.results).toBeUndefined();
+    expect(data.params).toBeUndefined();
     expect(data.error).toBeDefined();
     expect(data.error).toEqual('Invalid test ID.');
   });

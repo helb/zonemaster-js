@@ -50,14 +50,15 @@ export default class Zonemaster {
   /**
   * Get domain data from it's parent zone.
   * API method: https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-get_data_from_parent_zone
+  *
   * @param {String} domain - Domain name.
   *
   * @example
-  * zm.getDataFromParentZone('nic.cz')
+  * zm.dataFromParentZone('nic.cz')
   * // → {'ns_list': […], 'ds_list': […]}
-  * zm.getDataFromParentZone('does-not-exist.cz')
+  * zm.dataFromParentZone('does-not-exist.cz')
   * // → {'error': 'Domain does not exist.'}
-  * zm.getDataFromParentZone('.cz')
+  * zm.dataFromParentZone('.cz')
   * // → {'error': 'Domain name name or label outside allowed length'} -- error message from backend
   *
   * @returns {Object}  data
@@ -65,19 +66,12 @@ export default class Zonemaster {
   * @returns {Array}   data.ds_list - See backend docs.
   * @returns {String}  data.error   - Returns an error message when both ns_list and ds_list are empty or when the backend responds with an error message.
   */
-  async getDataFromParentZone(domain) {
-    const response = await rpc(
-      this.config.backendUrl,
-      'get_data_from_parent_zone',
-      domain
-    );
+  async dataFromParentZone(domain) {
+    const response = await rpc(this.config.backendUrl, 'get_data_from_parent_zone', domain);
 
     if (response.status === 'nok') {
       return { error: response.message };
-    } else if (
-      response.ns_list.length === 0 &&
-      response.ds_list.length === 0
-    ) {
+    } else if (response.ns_list.length === 0 && response.ds_list.length === 0) {
       return { error: 'Domain does not exist.' };
     }
 
@@ -87,19 +81,20 @@ export default class Zonemaster {
   /**
   * Get nameservers for a domain.
   * API method: https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-get_ns_ips
+  *
   * @param   {String} domain - Domain name.
   *
   * @example
-  * zm.getNameserverIPs('nic.cz')
+  * zm.nameserverIPs('nic.cz')
   * // → {'nameservers': […]}
-  * zm.getNameserverIPs('does-not-exist.cz')
+  * zm.nameserverIPs('does-not-exist.cz')
   * // → {error: 'No A or AAAA records found.'}
   *
   * @returns {Object} data
   * @returns {Array}  data.nameservers - Nameserver IPs, both IPv4 and IPv6
   * @returns {String} data.error       - Returns an error when no nameservers are found (backend returned 0.0.0.0, see their docs)
   */
-  async getNameserverIPs(domain) {
+  async nameserverIPs(domain) {
     const nameservers = [];
     const response = await rpc(this.config.backendUrl, 'get_ns_ips', domain);
 
@@ -117,6 +112,7 @@ export default class Zonemaster {
   /**
   * Start a new domain test.
   * API method: https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-start_domain_test
+  *
   * @param {Object}   config             - A config object with domain and some advanced options
   * @param {String}   config.domain      - Domain name, required
   * @param {Object}   config.nameservers - Nameservers to use, optional, see backend docs
@@ -150,6 +146,7 @@ export default class Zonemaster {
   /**
   * Get test progress percentage.
   * API method: https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-test_progress
+  *
   * @param   {String} id - Test ID (as returned from the startDomainTest method)
   *
   * @example
@@ -176,5 +173,34 @@ export default class Zonemaster {
     }
 
     return { progress: response };
+  }
+
+  /**
+  * Get test result.
+  * API method: https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-get_test_results
+  *
+  * @param   {String} id - Test ID (as returned from the startDomainTest method)
+  *
+  * @example
+  * zm.testResult('abdf123456789012')
+  * // → {progress: 80}
+  * zm.testResult('foo')
+  * // → {error: 'Invalid test ID.'}
+  * zm.testResult('1234567890123456')
+  * // → {error: 'Test not found.'}
+  *
+  * @returns {Object} data
+  * @returns {String} data.error    - Returns an error message for an invalid ID format or when the test wasn't found.
+  */
+  async testResult(testId) {
+    if (!this.constructor.validateTestID(testId)) {
+      return { error: 'Invalid test ID.' };
+    }
+
+    const response = await rpc(this.config.backendUrl, 'get_test_results', { id: testId });
+
+    // console.log(response);
+
+    return response;
   }
 }
