@@ -15,6 +15,23 @@ export default class Zonemaster {
   }
 
   /**
+  * Validate test ID with a simple regex.
+  *
+  * @param {String} testId
+  *
+  * @example
+  * zm.validateTestID('abdf123456789012')
+  * // → true
+  * zm.validateTestID('foo')
+  * // → false
+  *
+  * @returns {Boolean}
+  */
+  static validateTestID(testId) {
+    return /[a-f0-9]{16}/.test(testId);
+  }
+
+  /**
   * Get Zonemaster's backend and engine version.
   * API method: https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-version_info
   *
@@ -148,7 +165,7 @@ export default class Zonemaster {
   * @returns {String} data.error    - Returns an error message for an invalid ID format or when the test wasn't found.
   */
   async testProgress(testId) {
-    if (!/[a-f0-9]{16}/.test(testId)) {
+    if (!this.constructor.validateTestID(testId)) {
       return { error: 'Invalid test ID.' };
     }
 
