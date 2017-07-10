@@ -210,20 +210,20 @@ API method: <https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md
 -   `testId`  
 -   `id` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Test ID (as returned from the startDomainTest method)
 
-**Examples**
-
-```javascript
-zm.testResult('abdf123456789012')
-// → {progress: 80}
-zm.testResult('foo')
-// → {error: 'Invalid test ID.'}
-zm.testResult('1234567890123456')
-// → {error: 'Test not found.'}
-```
-
 Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** data
 
 Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** data.error    - Returns an error message for an invalid ID format or when the test wasn't found.
+
+#### testHistory
+
+Get test history for a domain.
+API method: <https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-get_test_history>
+
+**Parameters**
+
+-   `domain` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Domain name.
+
+Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** data
 
 ## Development
 
