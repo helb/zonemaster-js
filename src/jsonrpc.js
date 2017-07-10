@@ -15,6 +15,11 @@ const rpc = async (url, method, params) => {
   });
 
   const data = await response.json();
+
+  if (data.error) {
+    return { error: data.error.message };
+  }
+
   return data.result;
 };
 
