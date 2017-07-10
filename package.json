@@ -40,7 +40,7 @@
     "build": "src"
   },
   "jest": {
-    "testRegex": "/test/.*",
+    "testRegex": "/test/.*.test.js",
     "testEnvironment": "node",
     "automock": false,
     "setupFiles": [
@@ -48,7 +48,8 @@
     ],
     "coveragePathIgnorePatterns": [
       "/node_modules/",
-      "test-config.js"
+      "test-config.js",
+      "__mocks__"
     ]
   },
   "keywords": [

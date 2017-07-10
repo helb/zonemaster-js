@@ -1,14 +1,13 @@
 import Zonemaster from '../src/';
 import config from '../test-config.js';
+import mocks from './__mocks__/start_domain_test.mock.js';
 
 describe('Starts a new test', () => {
   const backend = new Zonemaster(config.backendUrl);
 
   test('with just a domain name', async () => {
     if (!config.useRealBackend) {
-      fetch.mockResponse(
-        JSON.stringify({ id: null, jsonrpc: '2.0', result: '7e5f02f0e433fe20' })
-      );
+      fetch.mockResponse(JSON.stringify(mocks.mock1));
     }
     expect.assertions(3);
     const data = await backend.startDomainTest(config.domains.default);
@@ -19,9 +18,7 @@ describe('Starts a new test', () => {
 
   test('with default parameters', async () => {
     if (!config.useRealBackend) {
-      fetch.mockResponse(
-        JSON.stringify({ id: null, jsonrpc: '2.0', result: '7e5f02f0e433fe20' })
-      );
+      fetch.mockResponse(JSON.stringify(mocks.mock1));
     }
     expect.assertions(3);
     const data = await backend.startDomainTest({
@@ -34,9 +31,7 @@ describe('Starts a new test', () => {
 
   test('with advanced parameters', async () => {
     if (!config.useRealBackend) {
-      fetch.mockResponse(
-        JSON.stringify({ id: null, jsonrpc: '2.0', result: '7e5f02f0e433fe20' })
-      );
+      fetch.mockResponse(JSON.stringify(mocks.mock1));
     }
     expect.assertions(3);
     const data = await backend.startDomainTest({
