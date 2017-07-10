@@ -25,7 +25,8 @@ export default {
         {
           module: 'BASIC',
           message:
-            'Nameserver for zone cz listed these nameservers as glue: a.ns.nic.cz., b.ns.nic.cz., d.ns.nic.cz..\n',
+            'Nameserver for zone cz listed these nameservers as glue: a.ns.nic.cz., b.ns.nic.cz.,'
+            + 'd.ns.nic.cz..\n',
           level: 'INFO'
         },
         {
@@ -35,7 +36,8 @@ export default {
         },
         {
           message:
-            'Nameserver a.ns.nic.cz listed these servers as glue: a.ns.nic.cz., b.ns.nic.cz., d.ns.nic.cz..\n',
+            'Nameserver a.ns.nic.cz listed these servers as glue: a.ns.nic.cz., b.ns.nic.cz.,'
+            + ' d.ns.nic.cz..\n',
           level: 'INFO',
           module: 'BASIC'
         },
@@ -47,7 +49,8 @@ export default {
         {
           module: 'BASIC',
           message:
-            'Nameserver a.ns.nic.cz listed these servers as glue: a.ns.nic.cz., b.ns.nic.cz., d.ns.nic.cz..\n',
+            'Nameserver a.ns.nic.cz listed these servers as glue: a.ns.nic.cz., b.ns.nic.cz.,'
+            + ' d.ns.nic.cz..\n',
           level: 'INFO'
         },
         {
@@ -59,7 +62,8 @@ export default {
           module: 'BASIC',
           level: 'INFO',
           message:
-            'Nameserver b.ns.nic.cz listed these servers as glue: a.ns.nic.cz., b.ns.nic.cz., d.ns.nic.cz..\n'
+            'Nameserver b.ns.nic.cz listed these servers as glue: a.ns.nic.cz., b.ns.nic.cz.,'
+            + ' d.ns.nic.cz..\n'
         },
         {
           level: 'INFO',
@@ -69,7 +73,8 @@ export default {
         {
           level: 'INFO',
           message:
-            'Nameserver b.ns.nic.cz listed these servers as glue: a.ns.nic.cz., b.ns.nic.cz., d.ns.nic.cz..\n',
+            'Nameserver b.ns.nic.cz listed these servers as glue: a.ns.nic.cz., b.ns.nic.cz.,'
+            + ' d.ns.nic.cz..\n',
           module: 'BASIC'
         },
         {
@@ -80,7 +85,8 @@ export default {
         {
           level: 'INFO',
           message:
-            'Nameserver d.ns.nic.cz listed these servers as glue: a.ns.nic.cz., b.ns.nic.cz., d.ns.nic.cz..\n',
+            'Nameserver d.ns.nic.cz listed these servers as glue: a.ns.nic.cz., b.ns.nic.cz.,'
+            + ' d.ns.nic.cz..\n',
           module: 'BASIC'
         },
         {
@@ -92,7 +98,8 @@ export default {
           module: 'BASIC',
           level: 'INFO',
           message:
-            'Nameserver d.ns.nic.cz listed these servers as glue: a.ns.nic.cz., b.ns.nic.cz., d.ns.nic.cz..\n'
+            'Nameserver d.ns.nic.cz listed these servers as glue: a.ns.nic.cz., b.ns.nic.cz.,'
+            + ' d.ns.nic.cz..\n'
         },
         {
           module: 'BASIC',
@@ -213,7 +220,8 @@ export default {
         },
         {
           message:
-            'A single SOA time parameter set was seen (REFRESH=10800, RETRY=3600, EXPIRE=1209600, MINIMUM=7200).\n',
+            'A single SOA time parameter set was seen (REFRESH=10800, RETRY=3600, EXPIRE=1209600,'
+            + ' MINIMUM=7200).\n',
           level: 'INFO',
           module: 'CONSISTENCY'
         },
@@ -247,31 +255,36 @@ export default {
         {
           module: 'DNSSEC',
           message:
-            'RRSIG with keytag 57307 and covering type(s) DNSKEY expires at : Sun Jul 16 15:37:45 2017.\n',
+            'RRSIG with keytag 57307 and covering type(s) DNSKEY expires at : Sun Jul 16 15:37:45'
+            + ' 2017.\n',
           level: 'INFO'
         },
         {
           module: 'DNSSEC',
           message:
-            'RRSIG with keytag 61281 and covering type(s) DNSKEY expires at : Sun Jul 16 19:18:00 2017.\n',
+            'RRSIG with keytag 61281 and covering type(s) DNSKEY expires at : Sun Jul 16 19:18:00'
+            + ' 2017.\n',
           level: 'INFO'
         },
         {
           message:
-            'RRSIG with keytag 57307 and covering type(s) SOA expires at : Sun Jul 16 15:07:29 2017.\n',
+            'RRSIG with keytag 57307 and covering type(s) SOA expires at : Sun Jul 16 15:07:29'
+            + ' 2017.\n',
           level: 'INFO',
           module: 'DNSSEC'
         },
         {
           message:
-            'The DNSKEY with tag 57307 uses algorithm number 13/(ECDSA Curve P-256 with SHA-256) [OK].\n',
+            'The DNSKEY with tag 57307 uses algorithm number 13/(ECDSA Curve P-256 with SHA-256)'
+            + ' [OK].\n',
           level: 'INFO',
           module: 'DNSSEC'
         },
         {
           level: 'INFO',
           message:
-            'The DNSKEY with tag 61281 uses algorithm number 13/(ECDSA Curve P-256 with SHA-256) [OK].\n',
+            'The DNSKEY with tag 61281 uses algorithm number 13/(ECDSA Curve P-256 with SHA-256)'
+            + ' [OK].\n',
           module: 'DNSSEC'
         },
         { message: 'The zone has NSEC3 records.\n', level: 'INFO', module: 'DNSSEC' },
@@ -283,20 +296,23 @@ export default {
         {
           level: 'INFO',
           message:
-            'Parent lists enough (3) nameservers (a.ns.nic.cz; b.ns.nic.cz; d.ns.nic.cz). Lower limit set to 2.\n',
+            'Parent lists enough (3) nameservers (a.ns.nic.cz; b.ns.nic.cz; d.ns.nic.cz). Lower'
+            + ' limit set to 2.\n',
           module: 'DELEGATION'
         },
         {
           module: 'DELEGATION',
           level: 'INFO',
           message:
-            'Child lists enough (3) nameservers (a.ns.nic.cz; b.ns.nic.cz; d.ns.nic.cz). Lower limit set to 2.\n'
+            'Child lists enough (3) nameservers (a.ns.nic.cz; b.ns.nic.cz; d.ns.nic.cz). Lower'
+            + ' limit set to 2.\n'
         },
         {
           module: 'DELEGATION',
           level: 'INFO',
           message:
-            'Parent and child list enough (3) nameservers (a.ns.nic.cz; b.ns.nic.cz; d.ns.nic.cz). Lower limit set to 2.\n'
+            'Parent and child list enough (3) nameservers (a.ns.nic.cz; b.ns.nic.cz; d.ns.nic.cz).'
+            + ' Lower limit set to 2.\n'
         },
         {
           module: 'DELEGATION',
@@ -312,7 +328,8 @@ export default {
         {
           module: 'DELEGATION',
           message:
-            'All these nameservers are confirmed to be authoritative : a.ns.nic.cz, b.ns.nic.cz, d.ns.nic.cz.\n',
+            'All these nameservers are confirmed to be authoritative : a.ns.nic.cz, b.ns.nic.cz,'
+            + ' d.ns.nic.cz.\n',
           level: 'INFO'
         },
         {
@@ -333,7 +350,8 @@ export default {
         {
           ns: 'All',
           message:
-            'None of the following nameservers is a recursor : a.ns.nic.cz, b.ns.nic.cz, d.ns.nic.cz.\n',
+            'None of the following nameservers is a recursor : a.ns.nic.cz, b.ns.nic.cz,'
+            + ' d.ns.nic.cz.\n',
           level: 'INFO',
           module: 'NAMESERVER'
         },
@@ -341,7 +359,9 @@ export default {
           ns: 'All',
           level: 'INFO',
           message:
-            'The following nameservers support EDNS0 : b.ns.nic.cz/194.0.13.1, b.ns.nic.cz/2001:678:10::1, a.ns.nic.cz/194.0.12.1, d.ns.nic.cz/2001:678:1::1, d.ns.nic.cz/193.29.206.1, a.ns.nic.cz/2001:678:f::1.\n',
+            'The following nameservers support EDNS0 : b.ns.nic.cz/194.0.13.1,'
+            + ' b.ns.nic.cz/2001:678:10::1, a.ns.nic.cz/194.0.12.1, d.ns.nic.cz/2001:678:1::1,'
+            + ' d.ns.nic.cz/193.29.206.1, a.ns.nic.cz/2001:678:f::1.\n',
           module: 'NAMESERVER'
         },
         {
@@ -388,7 +408,9 @@ export default {
         },
         {
           message:
-            'The following nameservers answer AAAA queries without problems : d.ns.nic.cz/2001:678:1::1, b.ns.nic.cz/2001:678:10::1, a.ns.nic.cz/194.0.12.1, b.ns.nic.cz/194.0.13.1, a.ns.nic.cz/2001:678:f::1, d.ns.nic.cz/193.29.206.1.\n',
+            'The following nameservers answer AAAA queries without problems :'
+            + ' d.ns.nic.cz/2001:678:1::1, b.ns.nic.cz/2001:678:10::1, a.ns.nic.cz/194.0.12.1,'
+            + ' b.ns.nic.cz/194.0.13.1, a.ns.nic.cz/2001:678:f::1, d.ns.nic.cz/193.29.206.1.\n',
           level: 'INFO',
           ns: 'All',
           module: 'NAMESERVER'
@@ -403,7 +425,8 @@ export default {
           ns: 'All',
           level: 'INFO',
           message:
-            'None of the following nameservers returns an upward referral : a.ns.nic.cz, b.ns.nic.cz, d.ns.nic.cz.\n',
+            'None of the following nameservers returns an upward referral : a.ns.nic.cz,'
+            + ' b.ns.nic.cz, d.ns.nic.cz.\n',
           module: 'NAMESERVER'
         },
         {
@@ -411,19 +434,22 @@ export default {
           ns: 'a.ns.nic.cz',
           level: 'INFO',
           message:
-            'Nameserver a.ns.nic.cz/194.0.12.1 preserves original case of queried names (WWw.NIc.cZ).\n'
+            'Nameserver a.ns.nic.cz/194.0.12.1 preserves original case of queried names'
+            + ' (WWw.NIc.cZ).\n'
         },
         {
           ns: 'a.ns.nic.cz',
           message:
-            'Nameserver a.ns.nic.cz/2001:678:f::1 preserves original case of queried names (WWw.NIc.cZ).\n',
+            'Nameserver a.ns.nic.cz/2001:678:f::1 preserves original case of queried names'
+            + ' (WWw.NIc.cZ).\n',
           level: 'INFO',
           module: 'NAMESERVER'
         },
         {
           level: 'INFO',
           message:
-            'Nameserver b.ns.nic.cz/194.0.13.1 preserves original case of queried names (WWw.NIc.cZ).\n',
+            'Nameserver b.ns.nic.cz/194.0.13.1 preserves original case of queried names'
+            + ' (WWw.NIc.cZ).\n',
           ns: 'b.ns.nic.cz',
           module: 'NAMESERVER'
         },
@@ -431,28 +457,32 @@ export default {
           module: 'NAMESERVER',
           ns: 'b.ns.nic.cz',
           message:
-            'Nameserver b.ns.nic.cz/2001:678:10::1 preserves original case of queried names (WWw.NIc.cZ).\n',
+            'Nameserver b.ns.nic.cz/2001:678:10::1 preserves original case of queried names'
+            + ' (WWw.NIc.cZ).\n',
           level: 'INFO'
         },
         {
           module: 'NAMESERVER',
           ns: 'd.ns.nic.cz',
           message:
-            'Nameserver d.ns.nic.cz/193.29.206.1 preserves original case of queried names (WWw.NIc.cZ).\n',
+            'Nameserver d.ns.nic.cz/193.29.206.1 preserves original case of queried names'
+            + ' (WWw.NIc.cZ).\n',
           level: 'INFO'
         },
         {
           module: 'NAMESERVER',
           ns: 'd.ns.nic.cz',
           message:
-            'Nameserver d.ns.nic.cz/2001:678:1::1 preserves original case of queried names (WWw.NIc.cZ).\n',
+            'Nameserver d.ns.nic.cz/2001:678:1::1 preserves original case of queried names'
+            + ' (WWw.NIc.cZ).\n',
           level: 'INFO'
         },
         {
           ns: 'All',
           level: 'INFO',
           message:
-            'When asked for SOA records on "www.nic.cz" with different cases,  all servers reply consistently.\n',
+            'When asked for SOA records on "www.nic.cz" with different cases,  all servers reply'
+            + ' consistently.\n',
           module: 'NAMESERVER'
         },
         {
@@ -469,7 +499,8 @@ export default {
           module: 'SYNTAX',
           level: 'INFO',
           message:
-            "Domain name (nic.cz) has no label with a double hyphen ('--') in position 3 and 4 (with a prefix which is not 'xn--').\n"
+            'Domain name (nic.cz) has no label with a double hyphen ("--") in position 3 and 4'
+            + ' (with a prefix which is not "xn--").\n'
         },
         {
           module: 'SYNTAX',
@@ -490,7 +521,7 @@ export default {
           module: 'SYNTAX',
           level: 'INFO',
           message:
-            "There is no misused '@' character in the SOA RNAME field (hostmaster.nic.cz.).\n"
+            'There is no misused "@" character in the SOA RNAME field (hostmaster.nic.cz.).\n'
         },
         {
           module: 'SYNTAX',
@@ -520,45 +551,47 @@ export default {
         {
           module: 'ZONE',
           level: 'INFO',
-          message: "SOA 'mname' nameserver (a.ns.nic.cz)is authoritative for 'nic.cz' zone.\n"
+          message: 'SOA "mname" nameserver (a.ns.nic.cz)is authoritative for "nic.cz" zone.\n'
         },
         {
           level: 'NOTICE',
-          message: "SOA 'refresh' value (10800) is less than the recommended minimum (14400).\n",
+          message: 'SOA "refresh" value (10800) is less than the recommended minimum (14400).\n',
           module: 'ZONE'
         },
         {
           level: 'INFO',
-          message: "SOA 'refresh' value (10800) is greater than the SOA 'retry' value (3600).\n",
+          message: 'SOA "refresh" value (10800) is greater than the SOA "retry" value (3600).\n',
           module: 'ZONE'
         },
         {
           module: 'ZONE',
           level: 'INFO',
           message:
-            "SOA 'expire' value (1209600) is higher than the minimum recommended value (604800) and not lower than the 'refresh' value (10800).\n"
+            'SOA "expire" value (1209600) is higher than the minimum recommended value (604800)'
+            + ' and not lower than the "refresh" value (10800).\n'
         },
         {
           module: 'ZONE',
           level: 'INFO',
-          message: "SOA 'minimum' value (7200) is within the recommended ones (300/86400).\n"
+          message: 'SOA "minimum" value (7200) is within the recommended ones (300/86400).\n'
         },
         {
           message:
-            "SOA 'mname' value (a.ns.nic.cz) refers to a NS which is not an alias (CNAME).\n",
+            'SOA "mname" value (a.ns.nic.cz) refers to a NS which is not an alias (CNAME).\n',
           level: 'INFO',
           module: 'ZONE'
         },
         {
           module: 'ZONE',
           level: 'INFO',
-          message: "SOA 'mname' value (a.ns.nic.cz) refers to a NS which is not an alias (CNAME).\n"
+          message: 'SOA "mname" value (a.ns.nic.cz) refers to a NS which is not an alias (CNAME).\n'
         },
         {
           module: 'ZONE',
           level: 'INFO',
           message:
-            'Target (MX=mail.nic.cz/MX=mx.nic.cz/MX=bh.nic.cz) found to deliver e-mail for the domain name.\n'
+            'Target (MX=mail.nic.cz/MX=mx.nic.cz/MX=bh.nic.cz) found to deliver e-mail for the'
+            + ' domain name.\n'
         }
       ],
       hash_id: '2499e68a5e11234a'
@@ -571,7 +604,9 @@ export default {
     id: 2,
     error: {
       message:
-        'malformed JSON string, neither array, object, number, string or atom, at character offset 0 (before "(end of string)") at /usr/share/perl5/Zonemaster/WebBackend/DB/PostgreSQL.pm line 184.\n',
+        'malformed JSON string, neither array, object, number, string or atom, at character offset'
+        + ' 0 (before "(end of string)") at /usr/share/perl5/Zonemaster/WebBackend/DB/PostgreSQL.pm'
+        + ' line 184.\n',
       code: -32603
     }
   }
