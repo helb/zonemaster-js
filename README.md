@@ -57,6 +57,25 @@ Interface to the Zonemaster backend.
 const zm = new Zonemaster('http://localhost:5000/')
 ```
 
+#### validateTestID
+
+Validate test ID with a simple regex.
+
+**Parameters**
+
+-   `testId` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+
+**Examples**
+
+```javascript
+zm.validateTestID('abdf123456789012')
+// → true
+zm.validateTestID('foo')
+// → false
+```
+
+Returns **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
 #### versionInfo
 
 Get Zonemaster's backend and engine version.
@@ -205,25 +224,6 @@ zm.testResult('1234567890123456')
 Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** data
 
 Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** data.error    - Returns an error message for an invalid ID format or when the test wasn't found.
-
-#### validateTestID
-
-Validate test ID with a simple regex.
-
-**Parameters**
-
--   `testId` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
-
-**Examples**
-
-```javascript
-zm.validateTestID('abdf123456789012')
-// → true
-zm.validateTestID('foo')
-// → false
-```
-
-Returns **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 ## Development
 

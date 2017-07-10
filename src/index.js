@@ -27,7 +27,7 @@ export default class Zonemaster {
   *
   * @returns {Boolean}
   */
-  static validateTestID(testId) {
+  validateTestID(testId) {
     return /[a-f0-9]{16}/.test(testId);
   }
 
@@ -162,7 +162,7 @@ export default class Zonemaster {
   * @returns {String} data.error    - Returns an error message for an invalid ID format or when the test wasn't found.
   */
   async testProgress(testId) {
-    if (!this.constructor.validateTestID(testId)) {
+    if (!this.validateTestID(testId)) {
       return { error: 'Invalid test ID.' };
     }
 
@@ -193,7 +193,7 @@ export default class Zonemaster {
   * @returns {String} data.error    - Returns an error message for an invalid ID format or when the test wasn't found.
   */
   async testResult(testId) {
-    if (!this.constructor.validateTestID(testId)) {
+    if (!this.validateTestID(testId)) {
       return { error: 'Invalid test ID.' };
     }
 
