@@ -30,7 +30,7 @@ zm.versionInfo().then(version => console.log(version));
 
 console.log(await zm.versionInfo());
 // → {'zonemaster_backend': '…', 'zonemaster_engine': '…'}
-console.log(await zm.getNameserverIPs('nic.cz'));
+console.log(await zm.nameserverIPs('nic.cz'));
 // → {'nameservers': ['2001:1488:0:3::2', '217.31.205.50']}
 ```
 
@@ -75,7 +75,7 @@ Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 
 Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** data.zonemaster_engine
 
-#### getDataFromParentZone
+#### dataFromParentZone
 
 Get domain data from it's parent zone.
 API method: <https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-get_data_from_parent_zone>
@@ -87,11 +87,11 @@ API method: <https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md
 **Examples**
 
 ```javascript
-zm.getDataFromParentZone('nic.cz')
+zm.dataFromParentZone('nic.cz')
 // → {'ns_list': […], 'ds_list': […]}
-zm.getDataFromParentZone('does-not-exist.cz')
+zm.dataFromParentZone('does-not-exist.cz')
 // → {'error': 'Domain does not exist.'}
-zm.getDataFromParentZone('.cz')
+zm.dataFromParentZone('.cz')
 // → {'error': 'Domain name name or label outside allowed length'} -- error message from backend
 ```
 
@@ -103,7 +103,7 @@ Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refere
 
 Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** data.error   - Returns an error message when both ns_list and ds_list are empty or when the backend responds with an error message.
 
-#### getNameserverIPs
+#### nameserverIPs
 
 Get nameservers for a domain.
 API method: <https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-get_ns_ips>
@@ -115,9 +115,9 @@ API method: <https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md
 **Examples**
 
 ```javascript
-zm.getNameserverIPs('nic.cz')
+zm.nameserverIPs('nic.cz')
 // → {'nameservers': […]}
-zm.getNameserverIPs('does-not-exist.cz')
+zm.nameserverIPs('does-not-exist.cz')
 // → {error: 'No A or AAAA records found.'}
 ```
 
@@ -180,6 +180,50 @@ Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 Returns **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** data.progress - Test progress percentage
 
 Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** data.error    - Returns an error message for an invalid ID format or when the test wasn't found.
+
+#### testResult
+
+Get test result.
+API method: <https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-get_test_results>
+
+**Parameters**
+
+-   `testId`  
+-   `id` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Test ID (as returned from the startDomainTest method)
+
+**Examples**
+
+```javascript
+zm.testResult('abdf123456789012')
+// → {progress: 80}
+zm.testResult('foo')
+// → {error: 'Invalid test ID.'}
+zm.testResult('1234567890123456')
+// → {error: 'Test not found.'}
+```
+
+Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** data
+
+Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** data.error    - Returns an error message for an invalid ID format or when the test wasn't found.
+
+#### validateTestID
+
+Validate test ID with a simple regex.
+
+**Parameters**
+
+-   `testId` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+
+**Examples**
+
+```javascript
+zm.validateTestID('abdf123456789012')
+// → true
+zm.validateTestID('foo')
+// → false
+```
+
+Returns **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 ## Development
 
