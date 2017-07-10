@@ -181,14 +181,6 @@ export default class Zonemaster {
   *
   * @param   {String} id - Test ID (as returned from the startDomainTest method)
   *
-  * @example
-  * zm.testResult('abdf123456789012')
-  * // → {progress: 80}
-  * zm.testResult('foo')
-  * // → {error: 'Invalid test ID.'}
-  * zm.testResult('1234567890123456')
-  * // → {error: 'Test not found.'}
-  *
   * @returns {Object} data
   * @returns {String} data.error    - Returns an error message for an invalid ID format or when the test wasn't found.
   */
@@ -202,5 +194,21 @@ export default class Zonemaster {
     // console.log(response);
 
     return response;
+  }
+
+  /**
+  * Get test history for a domain.
+  * API method: https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-get_test_history
+  *
+  * @param   {String} domain - Domain name.
+  *
+  * @returns {Object} data
+  */
+  async testHistory(domain) {
+    const response = await rpc(this.config.backendUrl, 'get_test_history', {
+      frontend_params: { domain }
+    });
+
+    return { results: response };
   }
 }
