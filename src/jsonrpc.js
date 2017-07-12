@@ -1,5 +1,3 @@
-import 'isomorphic-fetch';
-
 const rpc = async (url, method, params) => {
   const response = await fetch(url, {
     method: 'POST',

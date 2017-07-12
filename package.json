@@ -56,9 +56,6 @@
     "dns",
     "zonemaster"
   ],
-  "dependencies": {
-    "isomorphic-fetch": "^2.2.1"
-  },
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-eslint": "^7.1.1",
@@ -72,6 +69,7 @@
     "eslint": "^4.1.1",
     "eslint-config-airbnb-base": "^11.0.1",
     "eslint-plugin-import": "^2.7.0",
+    "isomorphic-fetch": "^2.2.1",
     "jest-cli": "^20.0.0",
     "jest-fetch-mock": "^1.2.0",
     "npm-watch": "^0.2.0",
