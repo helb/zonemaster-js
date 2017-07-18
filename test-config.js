@@ -2,6 +2,7 @@ import 'isomorphic-fetch';
 
 const config = {
   backendUrl: 'http://localhost:5000/',
+  invalidBackendUrl: 'http://localhost:0/',
   useRealBackend: false,
   domains: {
     default: 'nic.cz',
