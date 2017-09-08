@@ -1,4 +1,4 @@
-const rpc = async (url, method, params) => {
+const rpc = async (url, method, params, rpcVersion = '2.0') => {
   try {
     const response = await fetch(url, {
       method: 'POST',
@@ -7,7 +7,7 @@ const rpc = async (url, method, params) => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        jsonrpc: '2.0',
+        jsonrpc: rpcVersion,
         method,
         params
       })
