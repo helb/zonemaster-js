@@ -21,9 +21,7 @@ describe('Gets data from parent zone', () => {
       fetch.mockResponse(JSON.stringify(mocks.mock2));
     }
     expect.assertions(3);
-    const data = await backend.dataFromParentZone(
-      config.domains.withoutDNSSEC
-    );
+    const data = await backend.dataFromParentZone(config.domains.withoutDNSSEC);
     expect(data).toBeDefined();
     expect(data.ns_list.length).toBeGreaterThan(0);
     expect(data.ds_list.length).toBe(0);
@@ -34,9 +32,7 @@ describe('Gets data from parent zone', () => {
       fetch.mockResponse(JSON.stringify(mocks.mock3));
     }
     expect.assertions(3);
-    const data = await backend.dataFromParentZone(
-      config.domains.nonexisting
-    );
+    const data = await backend.dataFromParentZone(config.domains.nonexisting);
     expect(data).toBeDefined();
     expect(data.error).toBeDefined();
     expect(data.error).toEqual('Domain does not exist.');
