@@ -22,11 +22,13 @@ export default class Zonemaster {
   }
 }
 
-Zonemaster.prototype.dataFromParentZone = dataFromParentZone;
-Zonemaster.prototype.nameserverIPs = nameserverIPs;
-Zonemaster.prototype.startDomainTest = startDomainTest;
-Zonemaster.prototype.testHistory = testHistory;
-Zonemaster.prototype.testProgress = testProgress;
-Zonemaster.prototype.testResult = testResult;
-Zonemaster.prototype.validateTestID = validateTestID;
-Zonemaster.prototype.versionInfo = versionInfo;
+Object.assign(Zonemaster.prototype, {
+  dataFromParentZone,
+  nameserverIPs,
+  startDomainTest,
+  testHistory,
+  testProgress,
+  testResult,
+  validateTestID,
+  versionInfo
+});
