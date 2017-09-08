@@ -78,7 +78,7 @@ Returns **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
 
 #### versionInfo
 
-Get Zonemaster's backend and engine version.
+Get Zonemaster's backend and engine version. Async method.
 API method: <https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-version_info>
 
 **Examples**
@@ -96,7 +96,7 @@ Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 
 #### dataFromParentZone
 
-Get domain data from it's parent zone.
+Get domain data from it's parent zone. Async method.
 API method: <https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-get_data_from_parent_zone>
 
 **Parameters**
@@ -124,7 +124,7 @@ Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 
 #### nameserverIPs
 
-Get nameservers for a domain.
+Get nameservers for a domain. Async method.
 API method: <https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-get_ns_ips>
 
 **Parameters**
@@ -148,7 +148,7 @@ Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 
 #### startDomainTest
 
-Start a new domain test.
+Start a new domain test. Async method.
 API method: <https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-start_domain_test>
 
 **Parameters**
@@ -175,7 +175,7 @@ Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 
 #### testProgress
 
-Get test progress percentage.
+Get test progress percentage. Async method.
 API method: <https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-test_progress>
 
 **Parameters**
@@ -202,7 +202,7 @@ Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 
 #### testResult
 
-Get test result.
+Get test result. Async method.
 API method: <https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-get_test_results>
 
 **Parameters**
@@ -216,7 +216,7 @@ Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 
 #### testHistory
 
-Get test history for a domain.
+Get test history for a domain. Async method.
 API method: <https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-get_test_history>
 
 **Parameters**

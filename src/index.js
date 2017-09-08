@@ -32,7 +32,7 @@ export default class Zonemaster {
   }
 
   /**
-  * Get Zonemaster's backend and engine version.
+  * Get Zonemaster's backend and engine version. Async method.
   * API method: https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-version_info
   *
   * @example
@@ -48,7 +48,7 @@ export default class Zonemaster {
   }
 
   /**
-  * Get domain data from it's parent zone.
+  * Get domain data from it's parent zone. Async method.
   * API method: https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-get_data_from_parent_zone
   *
   * @param {String} domain - Domain name.
@@ -79,7 +79,7 @@ export default class Zonemaster {
   }
 
   /**
-  * Get nameservers for a domain.
+  * Get nameservers for a domain. Async method.
   * API method: https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-get_ns_ips
   *
   * @param   {String} domain - Domain name.
@@ -110,7 +110,7 @@ export default class Zonemaster {
   }
 
   /**
-  * Start a new domain test.
+  * Start a new domain test. Async method.
   * API method: https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-start_domain_test
   *
   * @param {Object}   config             - A config object with domain and some advanced options
@@ -144,7 +144,7 @@ export default class Zonemaster {
   }
 
   /**
-  * Get test progress percentage.
+  * Get test progress percentage. Async method.
   * API method: https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-test_progress
   *
   * @param   {String} id - Test ID (as returned from the startDomainTest method)
@@ -176,7 +176,7 @@ export default class Zonemaster {
   }
 
   /**
-  * Get test result.
+  * Get test result. Async method.
   * API method: https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-get_test_results
   *
   * @param   {String} id - Test ID (as returned from the startDomainTest method)
@@ -197,7 +197,7 @@ export default class Zonemaster {
   }
 
   /**
-  * Get test history for a domain.
+  * Get test history for a domain. Async method.
   * API method: https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-get_test_history
   *
   * @param   {String} domain - Domain name.
