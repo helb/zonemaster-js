@@ -57,44 +57,7 @@ Interface to the Zonemaster backend.
 const zm = new Zonemaster('http://localhost:5000/')
 ```
 
-#### validateTestID
-
-Validate test ID with a simple regex.
-
-**Parameters**
-
--   `testId` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
-
-**Examples**
-
-```javascript
-zm.validateTestID('abdf123456789012')
-// → true
-zm.validateTestID('foo')
-// → false
-```
-
-Returns **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
-
-#### versionInfo
-
-Get Zonemaster's backend and engine version. Async method.
-API method: <https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-version_info>
-
-**Examples**
-
-```javascript
-zm.versionInfo()
-// → {'zonemaster_backend': '…', 'zonemaster_engine': '…'}
-```
-
-Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** data
-
-Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** data.zonemaster_backend
-
-Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** data.zonemaster_engine
-
-#### dataFromParentZone
+### dataFromParentZone
 
 Get domain data from it's parent zone. Async method.
 API method: <https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-get_data_from_parent_zone>
@@ -122,7 +85,7 @@ Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refere
 
 Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** data.error   - Returns an error message when both ns_list and ds_list are empty or when the backend responds with an error message.
 
-#### nameserverIPs
+### nameserverIPs
 
 Get nameservers for a domain. Async method.
 API method: <https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-get_ns_ips>
@@ -146,7 +109,7 @@ Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refere
 
 Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** data.error       - Returns an error when no nameservers are found (backend returned 0.0.0.0, see their docs)
 
-#### startDomainTest
+### startDomainTest
 
 Start a new domain test. Async method.
 API method: <https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-start_domain_test>
@@ -173,7 +136,18 @@ Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 
 Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** data.id - Test ID
 
-#### testProgress
+### testHistory
+
+Get test history for a domain. Async method.
+API method: <https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-get_test_history>
+
+**Parameters**
+
+-   `domain` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Domain name.
+
+Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** data
+
+### testProgress
 
 Get test progress percentage. Async method.
 API method: <https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-test_progress>
@@ -200,7 +174,7 @@ Returns **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 
 Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** data.error    - Returns an error message for an invalid ID format or when the test wasn't found.
 
-#### testResult
+### testResult
 
 Get test result. Async method.
 API method: <https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-get_test_results>
@@ -214,16 +188,42 @@ Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 
 Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** data.error    - Returns an error message for an invalid ID format or when the test wasn't found.
 
-#### testHistory
+### validateTestID
 
-Get test history for a domain. Async method.
-API method: <https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-get_test_history>
+Validate test ID with a simple regex.
 
 **Parameters**
 
--   `domain` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Domain name.
+-   `testId` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+
+**Examples**
+
+```javascript
+zm.validateTestID('abdf123456789012')
+// → true
+zm.validateTestID('foo')
+// → false
+```
+
+Returns **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+### versionInfo
+
+Get Zonemaster's backend and engine version. Async method.
+API method: <https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-version_info>
+
+**Examples**
+
+```javascript
+zm.versionInfo()
+// → {'zonemaster_backend': '…', 'zonemaster_engine': '…'}
+```
 
 Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** data
+
+Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** data.zonemaster_backend
+
+Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** data.zonemaster_engine
 
 ## Development
 
