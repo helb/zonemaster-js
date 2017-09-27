@@ -2,6 +2,7 @@ import rpc from '../jsonrpc';
 
 /**
 * Get test result. Async method.
+*
 * API method: https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-get_test_results
 *
 * @param   {String} id - Test ID (as returned from the startDomainTest method)

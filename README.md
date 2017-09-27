@@ -38,6 +38,7 @@ Note: `await` can be used inside `async` functions only, as there is no support 
 
 -   [Clarifying question: can await be used in top-level code?](https://github.com/tc39/ecmascript-asyncawait/issues/9)
 -   [Top-level await is a footgun](https://gist.github.com/Rich-Harris/0b6f317657f5167663b493c722647221)
+-   It's supported in Chrome DevTools Console since Chrome 62 however, might be useful for trying out and debugging: [Top-level await operators in the Console](https://developers.google.com/web/updates/2017/08/devtools-release-notes#await)
 
 ## API
 
@@ -60,6 +61,7 @@ const zm = new Zonemaster('http://localhost:5000/')
 ### dataFromParentZone
 
 Get domain data from it's parent zone. Async method.
+
 API method: <https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-get_data_from_parent_zone>
 
 **Parameters**
@@ -88,6 +90,7 @@ Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 ### nameserverIPs
 
 Get nameservers for a domain. Async method.
+
 API method: <https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-get_ns_ips>
 
 **Parameters**
@@ -112,6 +115,7 @@ Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 ### startDomainTest
 
 Start a new domain test. Async method.
+
 API method: <https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-start_domain_test>
 
 **Parameters**
@@ -139,6 +143,7 @@ Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 ### testHistory
 
 Get test history for a domain. Async method.
+
 API method: <https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-get_test_history>
 
 **Parameters**
@@ -150,6 +155,7 @@ Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 ### testProgress
 
 Get test progress percentage. Async method.
+
 API method: <https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-test_progress>
 
 **Parameters**
@@ -177,6 +183,7 @@ Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 ### testResult
 
 Get test result. Async method.
+
 API method: <https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-get_test_results>
 
 **Parameters**
@@ -210,6 +217,7 @@ Returns **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
 ### versionInfo
 
 Get Zonemaster's backend and engine version. Async method.
+
 API method: <https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-version_info>
 
 **Examples**

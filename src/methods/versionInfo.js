@@ -2,6 +2,7 @@ import rpc from '../jsonrpc';
 
 /**
 * Get Zonemaster's backend and engine version. Async method.
+*
 * API method: https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-version_info
 *
 * @example

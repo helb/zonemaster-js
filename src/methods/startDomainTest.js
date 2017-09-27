@@ -2,6 +2,7 @@ import rpc from '../jsonrpc';
 
 /**
 * Start a new domain test. Async method.
+*
 * API method: https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-start_domain_test
 *
 * @param {Object}   config             - A config object with domain and some advanced options

@@ -2,6 +2,7 @@ import rpc from '../jsonrpc';
 
 /**
 * Get domain data from it's parent zone. Async method.
+*
 * API method: https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-get_data_from_parent_zone
 *
 * @param {String} domain - Domain name.
