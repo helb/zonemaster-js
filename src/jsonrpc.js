@@ -8,6 +8,7 @@ const rpc = async (url, method, params, rpcVersion = '2.0') => {
       },
       body: JSON.stringify({
         jsonrpc: rpcVersion,
+        id: Math.floor(Math.random() * 10) + 1,
         method,
         params
       })
