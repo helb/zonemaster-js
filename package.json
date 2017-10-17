@@ -1,6 +1,6 @@
 {
   "name": "zonemaster-js",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "JS interface for Zonemaster from IIS.se",
   "license": "GPL-3.0",
   "repository": "https://github.com/helb/zonemaster-js.git",
