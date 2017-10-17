@@ -1,4 +1,4 @@
-import rpc from '../jsonrpc';
+import rpc from '../utils/jsonrpc';
 
 /**
 * Get test result. Async method.

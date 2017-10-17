@@ -1,4 +1,4 @@
-import rpc from '../jsonrpc';
+import rpc from '../utils/jsonrpc';
 
 /**
 * Get Zonemaster's backend and engine version. Async method.

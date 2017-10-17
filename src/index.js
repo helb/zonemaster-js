@@ -6,6 +6,7 @@ import testProgress from './methods/testProgress';
 import testResult from './methods/testResult';
 import validateTestID from './methods/validateTestID';
 import versionInfo from './methods/versionInfo';
+import validateSyntax from './methods/validateSyntax';
 
 /**
  * Interface to the Zonemaster backend.
@@ -30,5 +31,6 @@ Object.assign(Zonemaster.prototype, {
   testProgress,
   testResult,
   validateTestID,
+  validateSyntax,
   versionInfo
 });

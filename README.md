@@ -195,6 +195,24 @@ Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 
 Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** data.error    - Returns an error message for an invalid ID format or when the test wasn't found.
 
+### validateSyntax
+
+Checks the domain name and params for validity. Async method.
+
+Domain is checked against a regex, because the backend validation is not working properly…
+
+API method: <https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md#api-method-validate_syntax>
+
+**Parameters**
+
+-   `config` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** A config object, same structure as in `startDomainTest`
+
+Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** data
+
+Returns **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** data.ok
+
+Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** data.message   - Human readable message from the backend
+
 ### validateTestID
 
 Validate test ID with a simple regex.
