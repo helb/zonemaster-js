@@ -1,4 +1,5 @@
-import rpc from '../jsonrpc';
+import rpc from '../utils/jsonrpc';
+import configFromDomainName from '../utils/configFromDomainName';
 
 /**
 * Start a new domain test. Async method.
@@ -22,15 +23,11 @@ import rpc from '../jsonrpc';
 * @returns {String} data.id - Test ID
 */
 export default async function startDomainTest(config) {
-  let testConfig;
-  if (typeof config === 'string') {
-    testConfig = { domain: config };
-  } else if (typeof config.domain !== 'string') {
-    return { error: 'Domain name required.' };
-  } else {
-    testConfig = config;
+  const testConfig = configFromDomainName(config);
+  try {
+    const response = await rpc(this.config.backendUrl, 'start_domain_test', testConfig);
+    return { id: response };
+  } catch (error) {
+    throw error;
   }
-
-  const response = await rpc(this.config.backendUrl, 'start_domain_test', testConfig);
-  return { id: response };
 }

@@ -44,12 +44,8 @@ describe('Starts a new test', () => {
     expect(data.id.length).toEqual(16);
   });
 
-  test('returns an error when called without a domain name', async () => {
-    expect.assertions(4);
-    const data = await backend.startDomainTest({});
-    expect(data).toBeDefined();
-    expect(data.if).toBeUndefined();
-    expect(data.error).toBeDefined();
-    expect(data.error).toEqual('Domain name required.');
+  test('throws an error when called without a domain name', () => {
+    expect.assertions(1);
+    expect(backend.startDomainTest({})).rejects.toBeDefined();
   });
 });
