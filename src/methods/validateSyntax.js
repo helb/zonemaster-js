@@ -11,6 +11,17 @@ import validateDomain from '../utils/validateDomain';
 *
 * @param {Object}   config         - A config object, same structure as in `startDomainTest`
 *
+* @example
+* zm.validateSyntax('nic.cz')
+* // → {ok: true, message: 'Syntax ok'}
+* zm.validateSyntax({domain: 'nic.cz', ipv4: false, ipv6: true})
+* // → {ok: true, message: 'Syntax ok'}
+* zm.validateSyntax('_')
+* // → {ok: false, message: 'Invalid domain.'}
+* zm.validateSyntax('háčkyčárky.cz')
+* // → {ok: false, message: 'Domain name contains non-ascii characters and IDN conversion is not installed'}
+* // (domain is valid, but didn't pass backend validation)
+*
 * @returns {Object} data
 * @returns {Boolean} data.ok
 * @returns {String} data.message   - Human readable message from the backend

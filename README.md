@@ -207,6 +207,20 @@ API method: <https://github.com/dotse/zonemaster-backend/blob/master/docs/API.md
 
 -   `config` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** A config object, same structure as in `startDomainTest`
 
+**Examples**
+
+```javascript
+zm.validateSyntax('nic.cz')
+// → {ok: true, message: 'Syntax ok'}
+zm.validateSyntax({domain: 'nic.cz', ipv4: false, ipv6: true})
+// → {ok: true, message: 'Syntax ok'}
+zm.validateSyntax('_')
+// → {ok: false, message: 'Invalid domain.'}
+zm.validateSyntax('háčkyčárky.cz')
+// → {ok: false, message: 'Domain name contains non-ascii characters and IDN conversion is not installed'}
+// (domain is valid, but didn't pass backend validation)
+```
+
 Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** data
 
 Returns **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** data.ok
