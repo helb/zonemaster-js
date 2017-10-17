@@ -45,12 +45,13 @@ describe('Validates test config syntax', () => {
     if (!config.useRealBackend) {
       fetch.mockResponse(JSON.stringify(mocks.mock2));
     }
-    expect.assertions(2);
+    expect.assertions(3);
     const data = await backend.validateSyntax({
       domain: config.domains.nonexisting
     });
     expect(data).toBeDefined();
     expect(data.ok).toEqual(false);
+    expect(data.message).toEqual('Invalid domain.');
   });
 
   test('throws an error when called without a domain name', () => {

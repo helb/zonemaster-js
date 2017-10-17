@@ -27,12 +27,13 @@ import validateDomain from '../utils/validateDomain';
 * @returns {String} data.message   - Human readable message from the backend
 */
 export default async function validateSyntax(config) {
-  const testConfig = configFromDomainName(config);
   try {
+    const testConfig = configFromDomainName(config);
     const response = await rpc(this.config.backendUrl, 'validate_syntax', testConfig);
+    const domainIsValid = validateDomain(testConfig.domain);
     return {
-      ok: response.status === 'ok' && validateDomain(config.domain || config),
-      message: response.message || 'Invalid domain.'
+      ok: response.status === 'ok' && domainIsValid,
+      message: domainIsValid ? response.message : 'Invalid domain.'
     };
   } catch (error) {
     throw error;

@@ -23,8 +23,8 @@ import configFromDomainName from '../utils/configFromDomainName';
 * @returns {String} data.id - Test ID
 */
 export default async function startDomainTest(config) {
-  const testConfig = configFromDomainName(config);
   try {
+    const testConfig = configFromDomainName(config);
     const response = await rpc(this.config.backendUrl, 'start_domain_test', testConfig);
     return { id: response };
   } catch (error) {
