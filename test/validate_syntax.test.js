@@ -49,7 +49,6 @@ describe('Validates test config syntax', () => {
     const data = await backend.validateSyntax({
       domain: config.domains.nonexisting
     });
-    console.log(data);
     expect(data).toBeDefined();
     expect(data.ok).toEqual(false);
   });
