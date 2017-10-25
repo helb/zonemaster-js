@@ -1,0 +1,28 @@
+image: node:8
+
+stages:
+  - lint
+  - test
+  - build
+
+build:
+  stage: build
+  script:
+   - npm install --silent
+   - npm run build
+  artifacts:
+    paths:
+     - dist/
+
+lint:
+    stage: lint
+    script:
+     - npm install --silent
+     - npm run lint
+
+test:
+    stage: test
+    script:
+     - npm install --silent
+     - npm run test
+
