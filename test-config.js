@@ -1,7 +1,7 @@
 import 'isomorphic-fetch';
 
 const config = {
-  backendUrl: 'http://localhost:5000/',
+  backendUrl: 'https://zonemaster.labs.nic.cz/backend/',
   invalidBackendUrl: 'http://localhost:0/',
   useRealBackend: false,
   domains: {
