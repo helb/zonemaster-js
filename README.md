@@ -246,7 +246,7 @@ Validate test ID with a simple regex.
 
 **Parameters**
 
--   `testId` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**
+-   `testId` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 **Examples**
 
@@ -257,7 +257,7 @@ zm.validateTestID('foo')
 // → false
 ```
 
-Returns **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)**
+Returns **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 ### versionInfo
 
